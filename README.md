@@ -1,5 +1,5 @@
 # Mutex
-A lightweight, basic C++ templates Mutex
+A lightweight, basic C++ templated Mutex
 
 ### I needed this for a project, but if you feel like this is useful then that's great! ###
 
