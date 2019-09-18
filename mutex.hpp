@@ -1,3 +1,5 @@
+#ifndef _MUTEX_TEMPLATE_H_
+#define _MUTEX_TEMPLATE_H_
 #include <mutex>
 
 template <typename T>
@@ -71,3 +73,5 @@ public:
         x.acquire()->do_something();
     } 
 */
+
+#endif
