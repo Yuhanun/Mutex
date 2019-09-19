@@ -13,6 +13,15 @@ public:
         : val{ val }, _guard{ _mtx } {
     }
 
+    MutexGuard& operator=(MutexGuard&&) = default;
+    MutexGuard& operator=(MutexGuard const&) = delete;
+
+    MutexGuard(MutexGuard&& other)
+        : val{ other.val }, _guard{ _mtx } {
+    }
+
+    MutexGuard(const MutexGuard&) = delete;
+
     T& get() {
         return val;
     }
