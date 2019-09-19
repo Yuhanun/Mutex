@@ -10,8 +10,8 @@ class MutexGuard {
 
 public:
     MutexGuard(T& val)
-        : val{ val }, _guard{ _mtx }
-    {}
+        : val{ val }, _guard{ _mtx } {
+    }
 
     T& get() {
         return val;
@@ -41,37 +41,23 @@ public:
 template <typename T>
 class Mutex {
     T _val;
+
 public:
-    template <typename = std::enable_if<std::is_default_constructible_v<T>>>
     Mutex()
-        : _val{}
-    {}
+        : _val{} {
+    }
 
     Mutex(T const& val)
-        : _val{ val }
-    {}
+        : _val{ val } {
+    }
 
     MutexGuard<T> acquire() {
-        return MutexGuard(_val);
+        return { _val };
     }
 
     MutexGuard<T> acquire() const {
-        return MutexGuard(_val);
+        return { _val };
     }
 };
-
-/*
-    Example usage:
-    struct Example {
-        void do_something() const {
-            std::cout << "Something" << std::endl;
-        }
-    };
-
-    int main() {
-        Mutex<Example> x{};
-        x.acquire()->do_something();
-    } 
-*/
 
 #endif
